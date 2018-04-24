@@ -5,8 +5,447 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KivetitoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Kivetítő"
+        Height="453"
+        Width="800">
+    <Grid x:Name="DefaultGrid">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="397*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="200"
+                              MinWidth="200"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="Btn_Dalok"
+                Content="Dalok"
+                HorizontalAlignment="Left"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                Width="130"
+                Height="40"
+                FontSize="20"
+                Click="Btn_Dalok_Click"
+                BorderBrush="Red"
+                BorderThickness="3"/>
+
+        <Button x:Name="Btn_Igek"
+                Content="Igék"
+                HorizontalAlignment="Left"
+                Margin="10,60,0,0"
+                VerticalAlignment="Top"
+                Width="130"
+                Height="40"
+                FontSize="20"
+                Click="Btn_Igek_Click"/>
+
+        <Button x:Name="Btn_Kepek"
+                Content="Képek"
+                HorizontalAlignment="Left"
+                Margin="10,111,0,0"
+                VerticalAlignment="Top"
+                Width="130"
+                Height="40"
+                FontSize="20"
+                Click="Btn_Kepek_Click"/>
+
+        <Button x:Name="Btn_Videok"
+                Content="Videók"
+                HorizontalAlignment="Left"
+                Margin="10,161,0,0"
+                VerticalAlignment="Top"
+                Width="130"
+                Height="40"
+                FontSize="20"
+                Click="Btn_Videok_Click"/>
+
+        <GridSplitter Grid.Column="1"
+                      Width="5"
+                      HorizontalAlignment="Stretch"
+                      IsEnabled="False" />
+
+        <GridSplitter Grid.Column="3"
+                      Width="5"
+                      HorizontalAlignment="Stretch"/>
+
+        <TabControl x:Name="TabControl_KezeloFelulet"
+                    BorderThickness="0"
+                    Grid.Column="2">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem x:Name="TabItem_Dalok"
+                     Header="Tab Dalok">
+                <Grid>
+                    <RadioButton x:Name="RadioBtn_Szovegben"
+                                 Content="Szövegben keres"
+                                 Margin="203,58,0,0"
+                                 Grid.IsSharedSizeScope="True"
+                                 Height="18"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Left"
+                                 Width="118"
+                                 FontSize="12"/>
+
+                    <RadioButton x:Name="RadioBtn_Cimben"
+                                 Content="Címben keres"
+                                 Margin="203,35,0,0"
+                                 Grid.IsSharedSizeScope="True"
+                                 HorizontalAlignment="Left"
+                                 Width="118"
+                                 Height="18"
+                                 VerticalAlignment="Top"
+                                 FontSize="12"/>
+
+                    <TextBox x:Name="TextBox_Keres"
+                             Margin="10,10,0,0"
+                             TextWrapping="Wrap"
+                             Text="Itt kereshetsz a dolok között."
+                             Grid.IsSharedSizeScope="True"
+                             Foreground="#FF7A7A7A"
+                             Background="#00000000"
+                             HorizontalAlignment="Left"
+                             Width="188"
+                             Height="20"
+                             VerticalAlignment="Top"
+                             GotFocus="Tb_Keres_GotFocus"/>
+
+                    <Button x:Name="Btn_Keres"
+                            Content="Keresés"
+                            Margin="203,10,0,0"
+                            Grid.IsSharedSizeScope="True"
+                            HorizontalAlignment="Left"
+                            Width="118"
+                            Height="20"
+                            VerticalAlignment="Top"/>
+
+                    <ListBox x:Name="ListBox_Eredmeny"
+                             Margin="10,35,0,23"
+                             HorizontalContentAlignment="Center"
+                             Grid.IsSharedSizeScope="True"
+                             HorizontalAlignment="Left"
+                             Width="188"/>
+
+
+                    <TextBlock x:Name="TextBlock_Dalok"
+                               Margin="0,10,10,0"
+                               FontSize="16"
+                               TextAlignment="Center"
+                               Height="27"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right"
+                               Width="60"
+                               Text="Dalok">
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="TabItem_Igek"
+                     Header="Tab Igék">
+                <Grid>
+                    <TextBox x:Name="TextBox_Verstol"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="188,22,0,0"
+                             VerticalAlignment="Top"
+                             Width="32"
+                             PreviewTextInput="Tb_Verstol_PreviewTextInput"
+                             TextChanged="Tb_Verstol_TextChanged"/>
+
+                    <TextBox x:Name="TextBox_Versig"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="272,22,0,0"
+                             VerticalAlignment="Top"
+                             Width="39"
+                             PreviewTextInput="Tb_Verstol_PreviewTextInput"
+                             TextChanged="Tb_Verstol_TextChanged"/>
+
+                    <TextBox x:Name="TextBox_Resztol"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="104,22,0,0"
+                             VerticalAlignment="Top"
+                             Width="32"
+                             PreviewTextInput="Tb_Verstol_PreviewTextInput"
+                             TextChanged="Tb_Verstol_TextChanged"/>
+
+                    <Label x:Name="Label_Verstol"
+                           Content="verstől"
+                           Margin="220,17,0,0"
+                           HorizontalContentAlignment="Left"
+                           VerticalContentAlignment="Top"
+                           FontSize="14"
+                           Width="52"
+                           Height="30"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+
+                    <Label x:Name="Label_Versig"
+                           Content="versig"
+                           Margin="311,17,0,0"
+                           HorizontalContentAlignment="Left"
+                           VerticalContentAlignment="Top"
+                           FontSize="14"
+                           Width="47"
+                           Height="30"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"/>
+
+                    <Label x:Name="Label_Resztol"
+                           Content="résztől"
+                           Margin="136,17,0,0"
+                           HorizontalContentAlignment="Left"
+                           VerticalContentAlignment="Top"
+                           FontSize="14"
+                           Width="52"
+                           Height="30"
+                           VerticalAlignment="Top" 
+                           HorizontalAlignment="Left"/>
+
+                    <RadioButton x:Name="RadioBtn_IgeSzakasz"
+                                 Content="Ige szakasz"
+                                 HorizontalAlignment="Left"
+                                 Margin="315,52,0,0"
+                                 VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="RadioBtn_TeljesResz"
+                                 Content="Teljes rész"
+                                 HorizontalAlignment="Left"
+                                 Margin="315,72,0,0"
+                                 VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="RadioBtn_TobbResz"
+                                 Content="Több rész"
+                                 HorizontalAlignment="Left"
+                                 Margin="315,92,0,0"
+                                 VerticalAlignment="Top"/>
+
+                    <Expander x:Name="Expander_Fejezet"
+                              Header="Expander"
+                              Width="100"
+                              Margin="0,20,0,0"
+                              HorizontalAlignment="Left"
+                              Height="181"
+                              VerticalAlignment="Top">
+                        <Grid Background="#FFE5E5E5">
+                            <ScrollBar Margin="81,0,0,0"></ScrollBar>
+                        </Grid>
+                    </Expander>
+
+                    <Canvas x:Name="Canvas_Vetites"
+                            HorizontalAlignment="Left"
+                            Height="354"
+                            Margin="0,62,0,0"
+                            VerticalAlignment="Top"
+                            Width="311">
+                        <Image Height="45"
+                               Canvas.Left="10"
+                               Canvas.Top="10"
+                               Width="80"/>
+                    </Canvas>
+
+                    <TextBlock x:Name="TextBlock_Igek"
+                               Margin="0,10,10,0"
+                               FontSize="16"
+                               TextAlignment="Center"
+                               Height="27"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right"
+                               Width="60" Text="Igék">
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="TabItem_Kepek"
+                     Header="Tab Képek">
+                <TextBlock x:Name="TextBlock_Kepek"
+                           Margin="0,10,10,0"
+                           FontSize="16"
+                           TextAlignment="Center"
+                           Height="27"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Width="60"
+                           Text="Képek">
+                </TextBlock>
+            </TabItem>
+
+            <TabItem x:Name="TabItem_Videok"
+                     Header="Tab Videók">
+                <TextBlock x:Name="TextBlock_Videok"
+                           Margin="0,10,10,0"
+                           FontSize="16"
+                           TextAlignment="Center"
+                           Height="27"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Width="60"
+                           Text="Videók">
+                </TextBlock>
+            </TabItem>
+        </TabControl>
+
+        <!--<ScrollViewer x:Name="ScrollViewer_OldalsoEszkoz"
+                      Grid.Column="4"
+                      Grid.IsSharedSizeScope="True" Margin="0,193,0,0">
+            <Grid x:Name="Grid_DalSzerkesztés"
+                  HorizontalAlignment="Left"
+                  Height="Auto"
+                  MinHeight="422"
+                  Margin="0,0,0,0"
+                  VerticalAlignment="Top"
+                  Width="Auto">
+                <TextBlock x:Name="Tblock_Szerkesztes"
+                       VerticalAlignment="Top"
+                       Margin="0,10,0,0"
+                       TextWrapping="NoWrap"
+                       Text="Szerkesztés"
+                       TextDecorations="Underline"
+                       TextAlignment="Center"
+                       FontSize="18"
+                       Height="Auto"
+                       MinWidth="183"/>
+
+                <TextBlock x:Name="Tblock_Szoveg"
+                       Margin="10,39,124,0"
+                       TextWrapping="NoWrap"
+                       Text="Szöveg"
+                       FontSize="14"
+                       Height="Auto"
+                       VerticalAlignment="Top"/>
+
+                <CheckBox x:Name="CheckBox_TeljeszSzovSzerk"
+                      Content="Teljes szöv. szerk."
+                      FontSize="12"
+                      Margin="64,43,3,0"
+                      VerticalAlignment="Top"
+                      Width="Auto"
+                      Height="Auto"/>
+
+                <Border x:Name="Border_Disz"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        Height="2"
+                        Margin="0,63,0,0"
+                        VerticalAlignment="Top"
+                        MinWidth="183"/>
+
+                <RichTextBox x:Name="RichTextBox_DalSzoveg"
+                             Margin="0,70,0,0"
+                             VerticalScrollBarVisibility="Auto"
+                             Height="131"
+                             VerticalAlignment="Top"
+                             MinWidth="183">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="RichTextBox"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
+            </Grid>
+        </ScrollViewer>-->
+
+        <TabControl Grid.Column="4" HorizontalAlignment="Left" Height="422" VerticalAlignment="Top" Width="200">
+
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Header="TabItem">
+
+                <ScrollViewer x:Name="ScrollViewer_OldalsoEszkoz"
+                              Grid.Column="4"
+                              Grid.IsSharedSizeScope="True">
+                    <Grid x:Name="Grid_DalSzerkesztés"
+                          HorizontalAlignment="Left"
+                          Height="404"
+                          MinHeight="422"
+                          Margin="0,0,0,0"
+                          VerticalAlignment="Top"
+                          Width="Auto">
+                        <TextBlock x:Name="Tblock_Szerkesztes"
+                                   VerticalAlignment="Top"
+                                   Margin="0,10,0,0"
+                                   TextWrapping="NoWrap"
+                                   Text="Szerkesztés"
+                                   TextDecorations="Underline"
+                                   TextAlignment="Center"
+                                   FontSize="18"
+                                   Height="Auto"
+                                   MinWidth="183"/>
+
+                        <TextBlock x:Name="Tblock_Szoveg"
+                                   Margin="10,39,124,0"
+                                   TextWrapping="NoWrap"
+                                   Text="Szöveg"
+                                   FontSize="14"
+                                   Height="Auto"
+                                   VerticalAlignment="Top"/>
+
+                        <CheckBox x:Name="CheckBox_TeljeszSzovSzerk"
+                                  Content="Teljes szöv. szerk."
+                                  FontSize="12"
+                                  Margin="64,43,3,0"
+                                  VerticalAlignment="Top"
+                                  Width="Auto"
+                                  Height="Auto"/>
+
+                        <Border x:Name="Border_Disz"
+                                BorderBrush="Black"
+                                BorderThickness="3"
+                                Height="2"
+                                Margin="0,63,0,0"
+                                VerticalAlignment="Top"
+                                MinWidth="183"/>
+
+                        <RichTextBox x:Name="RichTextBox_DalSzoveg"
+                                     Margin="0,70,0,0"
+                                     VerticalScrollBarVisibility="Auto"
+                                     Height="131"
+                                     VerticalAlignment="Top"
+                                     MinWidth="183">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="RichTextBox"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+
+
     </Grid>
 </Window>
